@@ -105,7 +105,7 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""CameraMovement"",
                     ""type"": ""Value"",
                     ""id"": ""c3478094-897e-45a0-ab89-7aa7aa8922e4"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -196,11 +196,11 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d8ce3464-4b71-45d9-868d-cf5bb4b8e652"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""id"": ""2e90c353-4a2d-4629-85e0-6bed32acc92a"",
+                    ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""processors"": ""DeltaTimeScale,ScaleVector2(x=0.1,y=0.1)"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""CameraMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
