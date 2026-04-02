@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace BBallHero.Gameplay.Player.Input
@@ -7,6 +8,17 @@ namespace BBallHero.Gameplay.Player.Input
     {
         [SerializeField]
         private InputReader _inputReader;
+
+        [SerializeField]
+        private float _currentMoveSpeed;
+        [SerializeField]
+        private float _moveSpeed = 10f;
+        [SerializeField]
+        private float _sprintSpeed = 15f;
+        [SerializeField, ReadOnly(true)]
+        private Vector2 _Vector2Input;
+
+        private Vector3 _moveDirection;
 
         private void OnEnable()
         {
@@ -32,45 +44,76 @@ namespace BBallHero.Gameplay.Player.Input
             _inputReader.LockOnPerformed -= OnLockOnPerformed;
         }
 
+        private void Start()
+        {
+            _currentMoveSpeed = _moveSpeed;
+        }
+
+        private void Update()
+        {
+            HandleMovement();
+        }
+
+        #region Input Event Functions
         private void OnLockOnPerformed()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnShootCancelled()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnShootPerformed()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnSprintCancelled()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnSprintPerformed()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnMovementCancelled(Vector2 vector)
         {
             
         }
 
+        private void OnShootCancelled()
+        {
+            
+        }
+
+        private void OnShootPerformed()
+        {
+            
+        }
+
+        private void OnSprintCancelled()
+        {
+            _currentMoveSpeed = _moveSpeed;
+        }
+
+        private void OnSprintPerformed()
+        {
+            _currentMoveSpeed = _sprintSpeed;
+        }
+
+        private void OnMovementCancelled(Vector2 vector)
+        {
+            _Vector2Input = Vector2.zero;
+        }
+
         private void OnMovementPerformed(Vector2 vector)
         {
-            Debug.Log("Movement Performed");
+            _Vector2Input = vector;
         }
 
         private void OnCameraMovementPerformed(Vector2 vector)
         {
-            throw new NotImplementedException();
+            
         }
+        #endregion
+
+        #region Action Handle
+        private void HandleMovement()
+        {
+
+            Vector3 cameraForward = Camera.main.transform.forward;
+            Vector3 cameraRight = Camera.main.transform.right;
+
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+
+            Vector3 moveDirection = (cameraForward * _Vector2Input.y) + (cameraRight * _Vector2Input.x);
+
+            transform.Translate(moveDirection * _currentMoveSpeed * Time.deltaTime);
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+        }
+        #endregion
     }
 }
 
