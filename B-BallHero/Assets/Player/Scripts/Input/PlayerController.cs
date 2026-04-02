@@ -9,16 +9,13 @@ namespace BBallHero.Gameplay.Player.Input
         [SerializeField]
         private InputReader _inputReader;
 
-        [SerializeField]
-        private float _currentMoveSpeed;
-        [SerializeField]
-        private float _moveSpeed = 10f;
-        [SerializeField]
-        private float _sprintSpeed = 15f;
-        [SerializeField, ReadOnly(true)]
-        private Vector2 _Vector2Input;
+        [SerializeField, Header("Player Modules")]
+        private MovementModule _movement;
 
-        private Vector3 _moveDirection;
+        [SerializeField, ReadOnly(true)]
+        private Vector2 _vector2Input;
+        [SerializeField, ReadOnly(true)]
+        private Vector2 _mouseVector2Input;
 
         private void OnEnable()
         {
@@ -44,14 +41,27 @@ namespace BBallHero.Gameplay.Player.Input
             _inputReader.LockOnPerformed -= OnLockOnPerformed;
         }
 
+        private void Awake()
+        {
+
+        }
+
         private void Start()
         {
-            _currentMoveSpeed = _moveSpeed;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
         }
 
         private void Update()
         {
-            HandleMovement();
+            
+        }
+
+        private void FixedUpdate()
+        {
+            _movement.HandleMovement(_vector2Input);
+            _movement.HandleRotation(_vector2Input);
         }
 
         #region Input Event Functions
@@ -72,47 +82,32 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void OnSprintCancelled()
         {
-            _currentMoveSpeed = _moveSpeed;
+            _movement.HandleSprint(false);
         }
 
         private void OnSprintPerformed()
         {
-            _currentMoveSpeed = _sprintSpeed;
+            _movement.HandleSprint(true);
         }
 
         private void OnMovementCancelled(Vector2 vector)
         {
-            _Vector2Input = Vector2.zero;
+            _vector2Input = Vector2.zero;
         }
 
         private void OnMovementPerformed(Vector2 vector)
         {
-            _Vector2Input = vector;
+            _vector2Input = vector;
         }
 
         private void OnCameraMovementPerformed(Vector2 vector)
         {
-            
+            _mouseVector2Input = vector;
         }
         #endregion
 
         #region Action Handle
-        private void HandleMovement()
-        {
 
-            Vector3 cameraForward = Camera.main.transform.forward;
-            Vector3 cameraRight = Camera.main.transform.right;
-
-            cameraForward.Normalize();
-            cameraRight.Normalize();
-
-            Vector3 moveDirection = (cameraForward * _Vector2Input.y) + (cameraRight * _Vector2Input.x);
-
-            transform.Translate(moveDirection * _currentMoveSpeed * Time.deltaTime);
-
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
-        }
         #endregion
     }
 }
