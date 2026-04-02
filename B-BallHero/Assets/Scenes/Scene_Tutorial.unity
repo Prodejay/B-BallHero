@@ -201,7 +201,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 866437274}
@@ -399,7 +399,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 9.71, y: 0, z: 5.73}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 866437274}
@@ -452,7 +452,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 15.74, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 866437274}
@@ -964,16 +964,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866437273}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.57, y: 0.67, z: -2.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.35625, y: 0.56779665, z: 1.5207098}
+  m_LocalScale: {x: 0.625, y: 0.84745765, z: 0.59171593}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 39013134}
   - {fileID: 388409713}
   - {fileID: 200827421}
   - {fileID: 1992807661}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1258000163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &899363990 stripped
 Transform:
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 1258000162}
   - component: {fileID: 1258000161}
   - component: {fileID: 1258000160}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1359,9 +1359,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4.97}
-  m_LocalScale: {x: 1.6, y: 1.18, z: 1.69}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 866437274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555302019
@@ -1497,7 +1498,7 @@ Rigidbody:
   m_GameObject: {fileID: 1698437133}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.5
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1528,9 +1529,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Player.MovementModule
   _currentMoveSpeed: 0
-  _moveSpeed: 20
+  _moveSpeed: 15
   _sprintSpeed: 30
-  _rotationSpeed: 7
+  _rotationDuration: 0.4
+  _maxSpeed: 20
+  _playerHeight: 1000
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _dragValue: 5
+  _isGrounded: 1
 --- !u!1 &1968624903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,7 +1611,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 9.71, y: 0.1, z: -10.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 866437274}
@@ -1669,7 +1677,6 @@ SceneRoots:
   - {fileID: 408313535}
   - {fileID: 39578847}
   - {fileID: 1258000163}
-  - {fileID: 866437274}
   - {fileID: 1050007849}
   - {fileID: 57493868}
   - {fileID: 1698437134}

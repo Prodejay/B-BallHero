@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,7 +6,7 @@ namespace BBallHero.Gameplay.Player
 {
     public class MovementModule : MonoBehaviour
     {
-
+        [Header("Movement")]
         [SerializeField]
         private float _currentMoveSpeed;
         [SerializeField]
@@ -13,7 +14,20 @@ namespace BBallHero.Gameplay.Player
         [SerializeField]
         private float _sprintSpeed = 15f;
         [SerializeField]
-        private float _rotationSpeed = 20f;
+        private float _rotationDuration = 1f;
+        [SerializeField]
+        private float _maxSpeed = 20f;
+
+        [Header("Ground Check")]
+        [SerializeField]
+        private float _playerHeight = 1f;
+        [SerializeField]
+        private LayerMask _groundLayer;
+        [SerializeField]
+        private float _dragValue;
+
+        [SerializeField, ReadOnly(true)]
+        private bool _isGrounded = true;
 
         float _turnSmoothVelocity;
         private Transform _mainCamera;
@@ -55,7 +69,14 @@ namespace BBallHero.Gameplay.Player
         public void HandleMovement(Vector2 vector2Input)
         {
             _moveDirection = _mainCamera.forward * vector2Input.y + _mainCamera.right * vector2Input.x;
-            _rb.AddForce(_moveDirection.normalized * _currentMoveSpeed, ForceMode.Force);
+            if (_rb.linearVelocity.magnitude > _maxSpeed)
+            {
+                _rb.linearVelocity = _rb.linearVelocity.normalized * _maxSpeed;
+            }
+            else
+            {
+                _rb.AddForce(_moveDirection.normalized * _currentMoveSpeed, ForceMode.Force);
+            }
         }
 
         public void HandleRotation(Vector2 vector2Input)
@@ -65,7 +86,7 @@ namespace BBallHero.Gameplay.Player
             if(inputDir.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(inputDir.x, inputDir.z) * Mathf.Rad2Deg + _mainCamera.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, 0.1f);
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _rotationDuration);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
         }
