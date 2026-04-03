@@ -83,6 +83,7 @@ namespace BBallHero.Gameplay.Player.Input
 
             _canMove = true;
             _throwBall.ReleaseThrow();
+            GameManager.instance.SetFreeLookCameraOn();
         }
 
         private void OnShootPerformed()
@@ -92,6 +93,7 @@ namespace BBallHero.Gameplay.Player.Input
 
             _canMove = false;
             _throwBall.StartThrow();
+            GameManager.instance.SetThirdPersonCameraOn();
         }
 
         private void OnSprintCancelled()

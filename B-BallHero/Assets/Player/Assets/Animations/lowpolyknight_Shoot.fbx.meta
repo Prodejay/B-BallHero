@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a006045b0fa68884aa7951aa90cca3a4
+guid: 6fa5af0df6a48134c8e93e9face728c8
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Shoot
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 250
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
