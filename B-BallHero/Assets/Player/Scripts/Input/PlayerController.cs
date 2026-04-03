@@ -11,6 +11,8 @@ namespace BBallHero.Gameplay.Player.Input
 
         [SerializeField, Header("Player Modules")]
         private MovementModule _movement;
+        [SerializeField]
+        private ShootModule _throwBall;
 
         [SerializeField, ReadOnly(true)]
         private Vector2 _vector2Input;
@@ -72,12 +74,12 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void OnShootCancelled()
         {
-            
+            _throwBall.ReleaseThrow();
         }
 
         private void OnShootPerformed()
         {
-            
+            _throwBall.StartThrow();
         }
 
         private void OnSprintCancelled()
