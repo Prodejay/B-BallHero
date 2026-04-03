@@ -21,6 +21,8 @@ namespace BBallHero.Gameplay.Player.Input
         [SerializeField, ReadOnly(true)]
         private Vector2 _mouseVector2Input;
 
+        private bool _canMove = true;
+
         private void OnEnable()
         {
             _inputReader.CameraMovementPerformed += OnCameraMovementPerformed;
@@ -78,6 +80,8 @@ namespace BBallHero.Gameplay.Player.Input
         {
             if (_player.hasBasketball == false)
                 return;
+
+            _canMove = true;
             _throwBall.ReleaseThrow();
         }
 
@@ -85,6 +89,8 @@ namespace BBallHero.Gameplay.Player.Input
         {
             if (_player.hasBasketball == false)
                 return;
+
+            _canMove = false;
             _throwBall.StartThrow();
         }
 
@@ -105,6 +111,8 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void OnMovementPerformed(Vector2 vector)
         {
+            if(_canMove == false)
+                return;
             _vector2Input = vector;
         }
 

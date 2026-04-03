@@ -34,7 +34,6 @@ namespace BBallHero.Gameplay.Player
         bool isSprinting; 
         private Vector3 _moveDirection;
 
-
         private Rigidbody _rb;
         private void Awake()
         {
