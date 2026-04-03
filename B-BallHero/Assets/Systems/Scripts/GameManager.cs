@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace BBallHero.Gameplay
@@ -26,10 +27,13 @@ namespace BBallHero.Gameplay
         private GameObject _freelookCamera;
         [SerializeField]
         private GameObject _thirdPersonCamera;
+        [SerializeField]
+        private TextMeshProUGUI _scoreText;
 
         public void AddScore(int score)
         {
             _score += score;
+            _scoreText.SetText($"Score: {_score}");
         }
 
         public void SetFreeLookCameraOn()

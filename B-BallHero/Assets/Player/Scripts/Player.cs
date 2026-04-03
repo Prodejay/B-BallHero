@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BBallHero.Gameplay.Player
@@ -15,6 +16,8 @@ namespace BBallHero.Gameplay.Player
 
         [SerializeField]
         private bool _hasBasketball;
+        [SerializeField]
+        private GameObject _animatedBall;
         public bool hasBasketball
         {
             get
@@ -44,13 +47,14 @@ namespace BBallHero.Gameplay.Player
         private void OnThrewBasketball()
         {
             _hasBasketball = false;
-            _animator.SetTrigger("Shoot");
-            _animator.SetBool("HasBall", false);
+            _animatedBall.SetActive(false);
+            _animator.SetBool("IsShooting", true);
         }
 
         private void OnPickedUpBasketball()
         {
             _hasBasketball = true;
+            _animatedBall.SetActive(true);
             _animator.SetBool("HasBall", true);
         }
 
@@ -62,7 +66,7 @@ namespace BBallHero.Gameplay.Player
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            _animatedBall.SetActive(false);
         }
 
         // Update is called once per frame
