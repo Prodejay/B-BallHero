@@ -8,6 +8,8 @@ namespace BBallHero.Gameplay.Player.Input
     {
         [SerializeField]
         private InputReader _inputReader;
+        [SerializeField]
+        private Player _player;
 
         [SerializeField, Header("Player Modules")]
         private MovementModule _movement;
@@ -74,11 +76,15 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void OnShootCancelled()
         {
+            if (_player.hasBasketball == false)
+                return;
             _throwBall.ReleaseThrow();
         }
 
         private void OnShootPerformed()
         {
+            if (_player.hasBasketball == false)
+                return;
             _throwBall.StartThrow();
         }
 

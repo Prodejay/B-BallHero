@@ -648,6 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484558318}
   - component: {fileID: 484558319}
+  - component: {fileID: 484558320}
   m_Layer: 0
   m_Name: PickupCollider
   m_TagString: Untagged
@@ -691,6 +692,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.47088945, z: 1}
   m_Center: {x: 0, y: 0.26455528, z: 0}
+--- !u!114 &484558320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484558317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0719366d481e6b0468ce26c9bd48c9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Player.BasketballPicker
+  _player: {fileID: 1698437141}
 --- !u!1 &775879631
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Player.Input.PlayerController
   _inputReader: {fileID: 11400000, guid: b8b525495500f6a40889e1ee91a1d40a, type: 2}
+  _player: {fileID: 1698437141}
   _movement: {fileID: 1698437138}
   _throwBall: {fileID: 1698437139}
   _vector2Input: {x: 0, y: 0}
@@ -1468,6 +1483,7 @@ GameObject:
   - component: {fileID: 1698437134}
   - component: {fileID: 1698437137}
   - component: {fileID: 1698437140}
+  - component: {fileID: 1698437141}
   - component: {fileID: 1698437138}
   - component: {fileID: 1698437139}
   m_Layer: 0
@@ -1562,7 +1578,7 @@ MonoBehaviour:
   _bballPrefab: {fileID: 7441440908871300343, guid: 052f0d9a551166b458c44593c6566808, type: 3}
   _shootStartPoint: {fileID: 898484297}
   _throwDirection: {x: 0, y: 1, z: 0}
-  _throwForce: 1
+  _throwForce: 5
   _maxForce: 10
   _chargeTime: 0
   _trajectoryLine: {fileID: 1698437140}
@@ -1676,6 +1692,21 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1698437141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698437133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67fdd71b74f2f9e44a6268d98ec51259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Player.Player
+  _basketballPicker: {fileID: 484558320}
+  _shootModule: {fileID: 1698437139}
+  _hasBasketball: 0
 --- !u!1 &1968624903
 GameObject:
   m_ObjectHideFlags: 0

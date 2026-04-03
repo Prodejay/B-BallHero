@@ -1,3 +1,4 @@
+using System;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ namespace BBallHero.Gameplay.Player
         private bool _isCharging = false;
         [SerializeField]
         private LineRenderer _trajectoryLine;
+
+        public event Action ThrewBasketball;
 
         private void Start()
         {
@@ -70,6 +73,7 @@ namespace BBallHero.Gameplay.Player
             ThrowBasketball(Mathf.Min(_chargeTime * _throwForce, _maxForce));
             _isCharging = false;
             _trajectoryLine.enabled = false;
+            ThrewBasketball?.Invoke();
         }
 
 
