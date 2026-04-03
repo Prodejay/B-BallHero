@@ -6,9 +6,17 @@ namespace BBallHero.Gameplay
     {
         private void OnTriggerEnter(Collider other)
         {
-            if(other.transform.tag == "Basketball")
+            if (other.transform.tag != "Basketball")
+                return;
+
+            Vector3 myCenter = GetComponent<Collider>().bounds.center;
+            Vector3 otherCenter = other.bounds.center;
+            Vector3 direction = (otherCenter - myCenter).normalized;
+            float dot = Vector3.Dot(direction, Vector3.up);
+
+            if (dot > 0.5f)
             {
-                //call game manager to add score
+                GameManager.instance.AddScore(1);
             }
         }
     }
