@@ -169,6 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7117914440113739907}
   - component: {fileID: 5039005223332700757}
+  - component: {fileID: 3951685538519657922}
   m_Layer: 0
   m_Name: Backboard
   m_TagString: Untagged
@@ -212,6 +213,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12867546, y: 1.6128442, z: 2.381536}
   m_Center: {x: -0.70014954, y: 0.07887375, z: -0.11893606}
+--- !u!114 &3951685538519657922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413552400337268243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243657e839393f442968e8c692873bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Sound.BallColliisionSoundHandle
+  soundType: 1
 --- !u!1 &3622300919822983311
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +943,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3672022455178961052, guid: a25414fd9b8475044b3637b1014e4430, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6068380418829078064}
+    - targetCorrespondingSourceObject: {fileID: -3672022455178961052, guid: a25414fd9b8475044b3637b1014e4430, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6012567984211962330}
   m_SourcePrefab: {fileID: 100100000, guid: a25414fd9b8475044b3637b1014e4430, type: 3}
 --- !u!1 &1292723718954910996 stripped
 GameObject:
@@ -957,6 +974,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5423731134757305092, guid: a25414fd9b8475044b3637b1014e4430, type: 3}
+--- !u!114 &6012567984211962330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292723718954910996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243657e839393f442968e8c692873bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Sound.BallColliisionSoundHandle
+  soundType: 5
 --- !u!1 &1840507826963970251 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5003563274206716603, guid: a25414fd9b8475044b3637b1014e4430, type: 3}

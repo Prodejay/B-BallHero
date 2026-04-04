@@ -306,6 +306,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2783131832183395012, guid: c09f3a2683c8c5546a2b3f45b81ee008, type: 3}
+--- !u!114 &57382933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57382928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243657e839393f442968e8c692873bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Sound.BallColliisionSoundHandle
+  soundType: 0
+  volume: 1
 --- !u!1001 &57493868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,11 +334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2835723512678456777, guid: 052f0d9a551166b458c44593c6566808, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.044
+      value: 3.24
       objectReference: {fileID: 0}
     - target: {fileID: 2835723512678456777, guid: 052f0d9a551166b458c44593c6566808, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.108
+      value: 8.83
       objectReference: {fileID: 0}
     - target: {fileID: 2835723512678456777, guid: 052f0d9a551166b458c44593c6566808, type: 3}
       propertyPath: m_LocalRotation.w
@@ -395,6 +409,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2400841460937244437, guid: e7ab943da77352a4f924ab869bb81ee5, type: 3}
+--- !u!114 &106778371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106778366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243657e839393f442968e8c692873bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Sound.BallColliisionSoundHandle
+  soundType: 0
+  volume: 1
 --- !u!1001 &159078118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,6 +1366,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7448491754376026801, guid: cf353de086542b541b7d218cf9ab3c17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 106778370}
+    - targetCorrespondingSourceObject: {fileID: 7448491754376026801, guid: cf353de086542b541b7d218cf9ab3c17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 106778371}
   m_SourcePrefab: {fileID: 100100000, guid: cf353de086542b541b7d218cf9ab3c17, type: 3}
 --- !u!1001 &1253690265
 PrefabInstance:
@@ -1402,6 +1433,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9150688959834052263, guid: a39d1d3235d0c6541b93bdc99f574241, type: 3}
       insertIndex: -1
       addedObject: {fileID: 57382932}
+    - targetCorrespondingSourceObject: {fileID: 9150688959834052263, guid: a39d1d3235d0c6541b93bdc99f574241, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57382933}
   m_SourcePrefab: {fileID: 100100000, guid: a39d1d3235d0c6541b93bdc99f574241, type: 3}
 --- !u!1 &1258000159
 GameObject:
@@ -2027,11 +2061,33 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7c5535aaa879036418a95d6aa6e1baec, type: 3}
     - {fileID: 8300000, guid: 126bf1fa2d27b1c49b70e68c56e31d13, type: 3}
     name: DRIBBLE
-  - _sounds: []
+  - _sounds:
+    - {fileID: 8300000, guid: 16e190d3c4cc011418ecaedd036d5f3c, type: 3}
     name: BACKBOARD
   - _sounds:
     - {fileID: 8300000, guid: 795aaab600cc6a5469270fa15a93f10f, type: 3}
     name: MLGHORN
+  - _sounds:
+    - {fileID: 8300000, guid: 4bc848ef3b0b1c243aa036c27dce336f, type: 3}
+    - {fileID: 8300000, guid: 382abc1098ba131499cbeeb79aa2c65a, type: 3}
+    - {fileID: 8300000, guid: 276312c35b4a5604498b262de94b0af1, type: 3}
+    - {fileID: 8300000, guid: 97e6819fa3da6f64a89fb52f9b537ce6, type: 3}
+    - {fileID: 8300000, guid: e93e77a42587b4844ba7b054c3e323b5, type: 3}
+    name: ARMORCLANK
+  - _sounds: []
+    name: METALPIPE
+  - _sounds:
+    - {fileID: 8300000, guid: 995eaf70129298b4ea025b088b6f0949, type: 3}
+    - {fileID: 8300000, guid: 0b043edb9126d8844a87bcab44548a40, type: 3}
+    name: RIMHIT
+  - _sounds:
+    - {fileID: 8300000, guid: a97230951660fed4093195508c29ab44, type: 3}
+    name: SHOOTSWISH
+  - _sounds:
+    - {fileID: 8300000, guid: 496c626354b7b5247959e442f7a17c68, type: 3}
+    - {fileID: 8300000, guid: f4cc61016a43b78429428ea3815d6a43, type: 3}
+    - {fileID: 8300000, guid: a17e468f68d236646ab9ee4caac47005, type: 3}
+    name: THROWWOOSH
 --- !u!1 &1968624903
 GameObject:
   m_ObjectHideFlags: 0

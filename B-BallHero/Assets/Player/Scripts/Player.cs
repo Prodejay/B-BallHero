@@ -104,12 +104,10 @@ namespace BBallHero.Gameplay.Player
             if (_rb.linearVelocity.magnitude > 0.1f)
             {
                 _animator.SetBool("IsMoving", true);
-                _audioSource.Play();
             }
             else
             {
                 _animator.SetBool("IsMoving", false);
-                _audioSource.Stop();
             }
         }
     }

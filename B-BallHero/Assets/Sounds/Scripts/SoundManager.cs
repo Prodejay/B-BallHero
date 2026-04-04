@@ -38,7 +38,7 @@ namespace BBallHero.Gameplay.Sound
         }
 
 #if UNITY_EDITOR
-        private void OnEnable()
+        private void OnValidate()
         {
             string[] names = Enum.GetNames(typeof(SoundType));
             Array.Resize(ref _soundList, names.Length);
@@ -50,7 +50,7 @@ namespace BBallHero.Gameplay.Sound
 #endif
     }
 
-    [Serializable]
+    [System.Serializable]
     public struct SoundEffect
     {
         [SerializeField]
@@ -64,8 +64,12 @@ namespace BBallHero.Gameplay.Sound
     {
         DRIBBLE,
         BACKBOARD,
-        MLGHORN
-
+        MLGHORN,
+        ARMORCLANK,
+        METALPIPE,
+        RIMHIT,
+        SHOOTSWISH,
+        THROWWOOSH
     }
 
 }

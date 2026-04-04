@@ -11,11 +11,17 @@ namespace BBallHero.Gameplay.Player
         public void BasketballThrown()
         {
             BasketballReleased?.Invoke();
+            SoundManager.instance.PlaySoundEffect(SoundType.THROWWOOSH);
         }
 
         public void BasketBounce()
         {
             SoundManager.instance.PlaySoundEffect(SoundType.DRIBBLE);
+        }
+
+        public void StepTaken()
+        {
+            SoundManager.instance.PlaySoundEffect(SoundType.ARMORCLANK, 0.5f);
         }
     }
 }

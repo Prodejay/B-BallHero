@@ -18,7 +18,8 @@ namespace BBallHero.Gameplay
             if (dot > 0.5f)
             {
                 GameManager.instance.AddScore(1);
-                SoundManager.instance.PlaySoundEffect(SoundType.MLGHORN);
+                SoundManager.instance.PlaySoundEffect(SoundType.SHOOTSWISH);
+                SoundManager.instance.PlaySoundEffect(SoundType.MLGHORN, 0.3f);
             }
         }
     }
