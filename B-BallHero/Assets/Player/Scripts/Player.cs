@@ -53,6 +53,7 @@ namespace BBallHero.Gameplay.Player
             _hasBasketball = false;
             _animatedBall.SetActive(false);
             _shootModule.ReleaseBall();
+            _animator.SetBool("IsShooting", false);
         }
 
         private void OnThrewBasketball()

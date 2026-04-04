@@ -71,6 +71,8 @@ namespace BBallHero.Gameplay.Player
         public void ReleaseThrow()
         {
             //Invoke event to play animation
+            _isCharging = false;
+            _trajectoryLine.enabled = false;
             ThrewBasketball?.Invoke();
         }
 
@@ -84,8 +86,6 @@ namespace BBallHero.Gameplay.Player
         public void ReleaseBall()
         {
             ThrowBasketball(Mathf.Min(_chargeTime * _throwForce, _maxForce));
-            _isCharging = false;
-            _trajectoryLine.enabled = false;
         }
 
 
