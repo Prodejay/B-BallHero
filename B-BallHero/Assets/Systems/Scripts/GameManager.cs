@@ -32,9 +32,16 @@ namespace BBallHero.Gameplay
         private TextMeshProUGUI _scoreText;
         [SerializeField]
         private GameObject _pausePanel;
+        [SerializeField]
+        private GameObject _gameOverPanel;
 
         private bool _isGamePaused = false;
         public bool isGamePaused => _isGamePaused;
+
+        private void Start()
+        {
+            UnPauseGame();
+        }
 
         public void AddScore(int score)
         {
@@ -80,6 +87,15 @@ namespace BBallHero.Gameplay
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             _pausePanel.SetActive(false);
+        }
+
+        public void GameOver()
+        {
+            _isGamePaused = true;
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            _gameOverPanel.SetActive(true);
         }
     }
 }

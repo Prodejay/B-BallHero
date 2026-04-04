@@ -111,6 +111,14 @@ namespace BBallHero.Gameplay.Player
                 _animator.SetBool("IsMoving", false);
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.transform.tag == "Enemy")
+            {
+                GameManager.instance.GameOver();
+            }
+        }
     }
 
 }

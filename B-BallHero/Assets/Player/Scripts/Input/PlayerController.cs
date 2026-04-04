@@ -22,7 +22,6 @@ namespace BBallHero.Gameplay.Player.Input
         [SerializeField, ReadOnly(true)]
         private Vector2 _mouseVector2Input;
 
-        private bool _canMove = true;
         private bool _isAiming = false;
 
         public event Action MovementStarted;
@@ -108,7 +107,6 @@ namespace BBallHero.Gameplay.Player.Input
 
             _throwBall.CancelThrow();
             _isAiming = false;
-            _canMove = true;
             GameManager.instance.SetFreeLookCameraOn();
         }
 
@@ -119,7 +117,6 @@ namespace BBallHero.Gameplay.Player.Input
             if (_isAiming == false)
                 return;
 
-            _canMove = true;
             _isAiming = false;
             _throwBall.ReleaseThrow();
             GameManager.instance.SetFreeLookCameraOn();
@@ -132,7 +129,6 @@ namespace BBallHero.Gameplay.Player.Input
 
             GameManager.instance.SetThirdPersonCameraOn();
             _movement.ForceRotateForThrow();
-            _canMove = false;
             _isAiming = true;
             _throwBall.StartThrow();
         }

@@ -99,61 +99,6 @@ Transform:
   - {fileID: 3014647578158290294}
   m_Father: {fileID: 602400552202465412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3271360172952861901
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 586118836931971170}
-  - component: {fileID: 1378610523821070602}
-  m_Layer: 0
-  m_Name: EnvironmentCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &586118836931971170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271360172952861901}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.024, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3017985525923566913}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1378610523821070602
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271360172952861901}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3050634
-  m_Height: 1.7385883
-  m_Direction: 1
-  m_Center: {x: 0.08411646, y: -0.12985241, z: 0.110820144}
 --- !u!1 &5794411324583357391
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +209,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 586118836931971170}
   - {fileID: 7327446838458021798}
   m_Father: {fileID: 602400552202465412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -375,6 +319,7 @@ GameObject:
   - component: {fileID: 6105156306248494905}
   - component: {fileID: 1415598928858101734}
   - component: {fileID: 6438937496838495036}
+  - component: {fileID: 1794761136154357583}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -557,7 +502,6 @@ MonoBehaviour:
   _shootModule: {fileID: 6438937496838495036}
   _playerAnimationEvents: {fileID: 3897361772409032432}
   _animator: {fileID: 8258378669107579536}
-  _audioSource: {fileID: 0}
   _hasBasketball: 0
   _animatedBall: {fileID: 8982796448325980056}
 --- !u!114 &1415598928858101734
@@ -598,6 +542,29 @@ MonoBehaviour:
   _maxForce: 10
   _player: {fileID: 6105156306248494905}
   _trajectoryLine: {fileID: 6999398311666451934}
+--- !u!136 &1794761136154357583
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942095041694440122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17695436
+  m_Height: 1.8097279
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.90486395, z: -0.02304563}
 --- !u!1001 &3340711588836455069
 PrefabInstance:
   m_ObjectHideFlags: 0
