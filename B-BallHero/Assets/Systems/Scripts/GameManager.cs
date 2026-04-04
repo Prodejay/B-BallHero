@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BBallHero.Gameplay
 {
@@ -46,6 +47,16 @@ namespace BBallHero.Gameplay
         {
             _thirdPersonCamera.SetActive(true);
             _freelookCamera.SetActive(false);
+        }
+
+        public void ReturnToTitleScreen()
+        {
+            SceneManager.LoadScene("Scene_Title");
+        }
+
+        public void LoadGameplayScene()
+        {
+            SceneManager.LoadScene("Scene_Gameplay");
         }
     }
 }

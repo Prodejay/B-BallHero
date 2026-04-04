@@ -1,4 +1,6 @@
+using BBallHero.Gameplay.Sound;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +16,10 @@ namespace BBallHero.Gameplay.Enemy
         private Transform _target;
         [SerializeField]
         private BasketScore _basketScore;
+        [SerializeField]
+        private ParticleSystem _explosionVFX;
+        [SerializeField]
+        private float _deathDelay = 2f;
 
         private void OnEnable()
         {
@@ -27,7 +33,17 @@ namespace BBallHero.Gameplay.Enemy
 
         private void OnScore()
         {
+            _explosionVFX.Play();
             _animator.SetTrigger("Death");
+            _agent.isStopped = true;
+            SoundManager.instance.PlaySoundEffect(SoundType.EXPLOSION, 0.5f);
+            StartCoroutine(DeathRoutine());
+        }
+
+        private IEnumerator DeathRoutine()
+        {
+            yield return new WaitForSeconds(_deathDelay);
+            Destroy(gameObject);
         }
 
         // Update is called once per frame

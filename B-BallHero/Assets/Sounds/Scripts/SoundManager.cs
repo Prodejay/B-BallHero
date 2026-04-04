@@ -70,7 +70,8 @@ namespace BBallHero.Gameplay.Sound
         RIMHIT,
         SHOOTSWISH,
         THROWWOOSH,
-        KOBE
+        KOBE,
+        EXPLOSION
     }
 
 }
