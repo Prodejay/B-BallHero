@@ -34,6 +34,8 @@ namespace BBallHero.Gameplay
         private GameObject _pausePanel;
         [SerializeField]
         private GameObject _gameOverPanel;
+        [SerializeField]
+        private TextMeshProUGUI _finalScoreText;
 
         private bool _isGamePaused = false;
         public bool isGamePaused => _isGamePaused;
@@ -95,6 +97,7 @@ namespace BBallHero.Gameplay
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            _finalScoreText.SetText($"FINAL SCORE: {_score}");
             _gameOverPanel.SetActive(true);
         }
     }

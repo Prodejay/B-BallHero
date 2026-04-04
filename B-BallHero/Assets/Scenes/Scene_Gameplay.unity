@@ -5363,6 +5363,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1478197148}
     - target: {fileID: 1586638870225699904, guid: 7f60b883ea64a1140946ff44a1c1ae21, type: 3}
+      propertyPath: _finalScoreText
+      value: 
+      objectReference: {fileID: 1576896238}
+    - target: {fileID: 1586638870225699904, guid: 7f60b883ea64a1140946ff44a1c1ae21, type: 3}
       propertyPath: _freelookCamera
       value: 
       objectReference: {fileID: 918085398}
