@@ -8,8 +8,14 @@ namespace BBallHero.Gameplay.Player
         [SerializeField]
         private Player _player;
 
+        private Collider _triggerCollider;
+
         public event Action PickedUpBasketball;
 
+        private void Awake()
+        {
+            _triggerCollider = GetComponent<Collider>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -20,7 +26,17 @@ namespace BBallHero.Gameplay.Player
                 return;
 
             PickedUpBasketball?.Invoke();
-            other.gameObject.SetActive(false); //replace with return to pool later
+            Destroy(other.gameObject);
+        }
+
+        public void DisableCollider()
+        {
+            _triggerCollider.enabled = false;
+        }
+
+        public void EnableCollider()
+        {
+            _triggerCollider.enabled = true;
         }
     }
 }

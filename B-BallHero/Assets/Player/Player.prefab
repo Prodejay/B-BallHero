@@ -596,6 +596,7 @@ MonoBehaviour:
   _throwDirection: {x: 0, y: 1, z: 0}
   _throwForce: 5
   _maxForce: 10
+  _player: {fileID: 6105156306248494905}
   _trajectoryLine: {fileID: 6999398311666451934}
 --- !u!1001 &3340711588836455069
 PrefabInstance:

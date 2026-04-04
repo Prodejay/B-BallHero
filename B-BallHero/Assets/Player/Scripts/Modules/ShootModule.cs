@@ -17,6 +17,8 @@ namespace BBallHero.Gameplay.Player
         private float _throwForce;
         [SerializeField]
         private float _maxForce;
+        [SerializeField]
+        private Player _player;
 
         private float _chargeTime = 0;
         private float _currentForce;
@@ -99,6 +101,8 @@ namespace BBallHero.Gameplay.Player
         {
             Vector3 _spawnPosition = _shootStartPoint.position + transform.forward;
             GameObject ball = Instantiate(_bballPrefab, _spawnPosition, transform.rotation);
+            ball.SetActive(true);
+            ball.transform.position = _spawnPosition;
             Rigidbody rb = ball.GetComponent<Rigidbody>();
             Vector3 finalThrowDirection = (transform.forward + _throwDirection).normalized;
             rb.AddForce(finalThrowDirection * force, ForceMode.VelocityChange);

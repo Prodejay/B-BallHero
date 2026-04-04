@@ -18,13 +18,12 @@ namespace BBallHero.Gameplay.Player
 
         [SerializeField]
         private Animator _animator;
-        [SerializeField]
-        private AudioSource _audioSource;
 
         [SerializeField]
         private bool _hasBasketball;
         [SerializeField]
         private GameObject _animatedBall;
+
         public bool hasBasketball
         {
             get
@@ -73,6 +72,7 @@ namespace BBallHero.Gameplay.Player
             _animatedBall.SetActive(false);
             _shootModule.ReleaseBall();
             _animator.SetBool("IsShooting", false);
+            _basketballPicker.EnableCollider();
         }
 
         private void OnThrewBasketball()
@@ -85,6 +85,7 @@ namespace BBallHero.Gameplay.Player
             _hasBasketball = true;
             _animatedBall.SetActive(true);
             _animator.SetBool("HasBall", true);
+            _basketballPicker.DisableCollider();
         }
 
         private void Awake()
