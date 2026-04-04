@@ -24,6 +24,9 @@ namespace BBallHero.Gameplay.Player.Input
         private bool _canMove = true;
         private bool _isAiming = false;
 
+        public event Action MovementStarted;
+        public event Action MovementStopped;
+
         private void OnEnable()
         {
             _inputReader.CameraMovementPerformed += OnCameraMovementPerformed;
@@ -132,11 +135,13 @@ namespace BBallHero.Gameplay.Player.Input
         private void OnMovementCancelled(Vector2 vector)
         {
             _vector2Input = Vector2.zero;
+            MovementStopped?.Invoke();
         }
 
         private void OnMovementPerformed(Vector2 vector)
         {
             _vector2Input = vector;
+            MovementStarted?.Invoke();
         }
 
         private void OnCameraMovementPerformed(Vector2 vector)

@@ -1,12 +1,22 @@
 using BBallHero.Gameplay.Player;
+using BBallHero.Gameplay.Sound;
 using System;
 using UnityEngine;
 
-public class PlayerAnimationEvents : MonoBehaviour
+namespace BBallHero.Gameplay.Player
 {
-    public event Action BasketballReleased;
-    public void BasketballThrown()
+    public class PlayerAnimationEvents : MonoBehaviour
     {
-        BasketballReleased?.Invoke();
+        public event Action BasketballReleased;
+        public void BasketballThrown()
+        {
+            BasketballReleased?.Invoke();
+        }
+
+        public void BasketBounce()
+        {
+            SoundManager.instance.PlaySoundEffect(SoundType.DRIBBLE);
+        }
     }
 }
+

@@ -1,3 +1,4 @@
+using BBallHero.Gameplay.Player.Input;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,12 +10,16 @@ namespace BBallHero.Gameplay.Player
         [SerializeField]
         private BasketballPicker _basketballPicker;
         [SerializeField]
+        private PlayerController _playerController;
+        [SerializeField]
         private ShootModule _shootModule;
         [SerializeField]
         private PlayerAnimationEvents _playerAnimationEvents;
 
         [SerializeField]
         private Animator _animator;
+        [SerializeField]
+        private AudioSource _audioSource;
 
         [SerializeField]
         private bool _hasBasketball;
@@ -39,6 +44,8 @@ namespace BBallHero.Gameplay.Player
             _basketballPicker.PickedUpBasketball += OnPickedUpBasketball;
             _shootModule.ThrewBasketball += OnThrewBasketball;
             _playerAnimationEvents.BasketballReleased += OnBasketballReleased;
+            _playerController.MovementStarted += OnMovementStarted;
+            _playerController.MovementStopped += OnMovementStopped;
         }
 
         private void OnDisable()
@@ -46,6 +53,18 @@ namespace BBallHero.Gameplay.Player
             _basketballPicker.PickedUpBasketball -= OnPickedUpBasketball;
             _shootModule.ThrewBasketball -= OnThrewBasketball;
             _playerAnimationEvents.BasketballReleased -= OnBasketballReleased;
+            _playerController.MovementStarted -= OnMovementStarted;
+            _playerController.MovementStopped -= OnMovementStopped;
+        }
+
+        private void OnMovementStopped()
+        {
+            
+        }
+
+        private void OnMovementStarted()
+        {
+            
         }
 
         private void OnBasketballReleased()
@@ -83,9 +102,15 @@ namespace BBallHero.Gameplay.Player
         void Update()
         {
             if (_rb.linearVelocity.magnitude > 0.1f)
+            {
                 _animator.SetBool("IsMoving", true);
+                _audioSource.Play();
+            }
             else
+            {
                 _animator.SetBool("IsMoving", false);
+                _audioSource.Stop();
+            }
         }
     }
 

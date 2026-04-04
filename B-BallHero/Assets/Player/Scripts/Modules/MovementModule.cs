@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,6 +29,7 @@ namespace BBallHero.Gameplay.Player
         private Vector3 _moveDirection;
 
         private Rigidbody _rb;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();

@@ -1,3 +1,4 @@
+using BBallHero.Gameplay.Sound;
 using UnityEngine;
 
 namespace BBallHero.Gameplay
@@ -17,6 +18,7 @@ namespace BBallHero.Gameplay
             if (dot > 0.5f)
             {
                 GameManager.instance.AddScore(1);
+                SoundManager.instance.PlaySoundEffect(SoundType.MLGHORN);
             }
         }
     }
