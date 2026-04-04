@@ -30,6 +30,11 @@ namespace BBallHero.Gameplay
         private GameObject _thirdPersonCamera;
         [SerializeField]
         private TextMeshProUGUI _scoreText;
+        [SerializeField]
+        private GameObject _pausePanel;
+
+        private bool _isGamePaused = false;
+        public bool isGamePaused => _isGamePaused;
 
         public void AddScore(int score)
         {
@@ -57,6 +62,24 @@ namespace BBallHero.Gameplay
         public void LoadGameplayScene()
         {
             SceneManager.LoadScene("Scene_Gameplay");
+        }
+
+        public void PauseGame()
+        {
+            _isGamePaused = true;
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            _pausePanel.SetActive(true);
+        }
+
+        public void UnPauseGame()
+        {
+            _isGamePaused = false;
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            _pausePanel.SetActive(false);
         }
     }
 }

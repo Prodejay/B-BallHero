@@ -41,6 +41,7 @@ namespace BBallHero.Gameplay.Player.Input
         public event Action ShootPerformed;
         public event Action ShootCancelled;
         public event Action CancelShotPerformed;
+        public event Action PausePerformed;
 
 
         public void OnCameraMovement(InputAction.CallbackContext context)
@@ -95,6 +96,14 @@ namespace BBallHero.Gameplay.Player.Input
             if (context.performed)
             {
                 CancelShotPerformed?.Invoke();
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                PausePerformed?.Invoke();
             }
         }
     }

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using Unity.Jobs;
 using UnityEngine;
 
 namespace BBallHero.Gameplay.Player.Input
@@ -37,6 +38,7 @@ namespace BBallHero.Gameplay.Player.Input
             _inputReader.ShootPerformed += OnShootPerformed;
             _inputReader.ShootCancelled += OnShootCancelled;
             _inputReader.CancelShotPerformed += OnCancelShotPerformed;
+            _inputReader.PausePerformed += OnPausePerformed;
         }
 
         private void OnDisable()
@@ -49,6 +51,19 @@ namespace BBallHero.Gameplay.Player.Input
             _inputReader.ShootPerformed -= OnShootPerformed;
             _inputReader.ShootCancelled -= OnShootCancelled;
             _inputReader.CancelShotPerformed -= OnCancelShotPerformed;
+            _inputReader.PausePerformed -= OnPausePerformed;
+        }
+
+        private void OnPausePerformed()
+        {
+            if(GameManager.instance.isGamePaused == false)
+            {
+                GameManager.instance.PauseGame();
+            }
+            else
+            {
+                GameManager.instance.UnPauseGame();
+            }
         }
 
         private void Awake()
