@@ -1,4 +1,5 @@
 using BBallHero.Gameplay.Sound;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace BBallHero.Gameplay
@@ -7,6 +8,8 @@ namespace BBallHero.Gameplay
     {
         [SerializeField]
         private ParticleSystem _confettiVFX;
+        [SerializeField]
+        private CinemachineImpulseSource _impulse;
         private void OnTriggerEnter(Collider other)
         {
             if (other.transform.tag != "Basketball")
@@ -21,6 +24,7 @@ namespace BBallHero.Gameplay
             {
                 GameManager.instance.AddScore(1);
                 _confettiVFX.Play();
+                _impulse.GenerateImpulse();
                 SoundManager.instance.PlaySoundEffect(SoundType.SHOOTSWISH);
                 SoundManager.instance.PlaySoundEffect(SoundType.MLGHORN, 0.3f);
             }
