@@ -10,6 +10,8 @@ namespace BBallHero.Gameplay.Player
         private BasketballPicker _basketballPicker;
         [SerializeField]
         private ShootModule _shootModule;
+        [SerializeField]
+        private PlayerAnimationEvents _playerAnimationEvents;
 
         [SerializeField]
         private Animator _animator;
@@ -36,18 +38,25 @@ namespace BBallHero.Gameplay.Player
         {
             _basketballPicker.PickedUpBasketball += OnPickedUpBasketball;
             _shootModule.ThrewBasketball += OnThrewBasketball;
+            _playerAnimationEvents.BasketballReleased += OnBasketballReleased;
         }
 
         private void OnDisable()
         {
             _basketballPicker.PickedUpBasketball -= OnPickedUpBasketball;
             _shootModule.ThrewBasketball -= OnThrewBasketball;
+            _playerAnimationEvents.BasketballReleased -= OnBasketballReleased;
+        }
+
+        private void OnBasketballReleased()
+        {
+            _hasBasketball = false;
+            _animatedBall.SetActive(false);
+            _shootModule.ReleaseBall();
         }
 
         private void OnThrewBasketball()
         {
-            _hasBasketball = false;
-            _animatedBall.SetActive(false);
             _animator.SetBool("IsShooting", true);
         }
 

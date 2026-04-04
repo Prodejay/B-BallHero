@@ -22,17 +22,6 @@ namespace BBallHero.Gameplay.Player
         [SerializeField]
         private float _brakeForce = 10f;
 
-        [Header("Ground Check")]
-        [SerializeField]
-        private float _playerHeight = 1f;
-        [SerializeField]
-        private LayerMask _groundLayer;
-        [SerializeField]
-        private float _dragValue;
-
-        [SerializeField, ReadOnly(true)]
-        private bool _isGrounded = true;
-
         float _turnSmoothVelocity;
         private Transform _mainCamera;
         bool isSprinting; 

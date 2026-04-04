@@ -70,14 +70,20 @@ namespace BBallHero.Gameplay.Player
 
         public void ReleaseThrow()
         {
-            ThrowBasketball(Mathf.Min(_chargeTime * _throwForce, _maxForce));
-            _isCharging = false;
-            _trajectoryLine.enabled = false;
+            //Invoke event to play animation
             ThrewBasketball?.Invoke();
         }
 
         public void CancelThrow()
         {
+            _isCharging = false;
+            _trajectoryLine.enabled = false;
+        }
+
+        //called on time for when animation event for throw ball runs
+        public void ReleaseBall()
+        {
+            ThrowBasketball(Mathf.Min(_chargeTime * _throwForce, _maxForce));
             _isCharging = false;
             _trajectoryLine.enabled = false;
         }

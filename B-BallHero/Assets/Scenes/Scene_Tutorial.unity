@@ -881,8 +881,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.47088945, z: 1}
-  m_Center: {x: 0, y: 0.26455528, z: 0}
+  m_Size: {x: 1.4823785, y: 0.95548815, z: 1.217073}
+  m_Center: {x: 0.0400213, y: 0.50685465, z: 0.10853648}
 --- !u!114 &484558320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2215,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ee5b4c92e2d5d03458bbe9e07fe77483, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1455217729}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ee5b4c92e2d5d03458bbe9e07fe77483, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1455217730}
   m_SourcePrefab: {fileID: 100100000, guid: ee5b4c92e2d5d03458bbe9e07fe77483, type: 3}
 --- !u!1 &1258000159
 GameObject:
@@ -2693,6 +2696,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1455217730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455217727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a52b99869de5e4ea825ff72c7ac0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationEvents
 --- !u!1 &1496485679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,12 +3086,6 @@ MonoBehaviour:
   _rotationDuration: 0.4
   _aimRotationSpeed: 10
   _brakeForce: 10
-  _playerHeight: 1000
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _dragValue: 5
-  _isGrounded: 1
 --- !u!114 &1698437139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3219,6 +3228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Player.Player
   _basketballPicker: {fileID: 484558320}
   _shootModule: {fileID: 1698437139}
+  _playerAnimationEvents: {fileID: 1455217730}
   _animator: {fileID: 1455217729}
   _hasBasketball: 0
   _animatedBall: {fileID: 1975344078}
