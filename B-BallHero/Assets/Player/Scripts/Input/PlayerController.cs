@@ -91,9 +91,10 @@ namespace BBallHero.Gameplay.Player.Input
             if (_player.hasBasketball == false)
                 return;
 
+            GameManager.instance.SetThirdPersonCameraOn();
+            _movement.ForceRotateForThrow();
             _canMove = false;
             _throwBall.StartThrow();
-            GameManager.instance.SetThirdPersonCameraOn();
         }
 
         private void OnSprintCancelled()

@@ -89,6 +89,13 @@ namespace BBallHero.Gameplay.Player
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
         }
+
+        public void ForceRotateForThrow()
+        {
+            Vector3 cameraEuler = _mainCamera.rotation.eulerAngles;
+            Quaternion targetRotation = Quaternion.Euler(0, cameraEuler.y, 0);
+            transform.rotation = targetRotation;
+        }
     }
 }
 

@@ -276,7 +276,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2835723512678456777, guid: 052f0d9a551166b458c44593c6566808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.703
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 2835723512678456777, guid: 052f0d9a551166b458c44593c6566808, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1293,8 +1293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
-  Damping: {x: 0.1, y: 3.93, z: 0.3}
-  ShoulderOffset: {x: 0.83, y: 0.26, z: 0}
+  Damping: {x: 0.1, y: 0.1, z: 0.3}
+  ShoulderOffset: {x: 0.71, y: 0.71, z: 0}
   VerticalArmLength: 1.26
   CameraSide: 1
   CameraDistance: 3.24
@@ -1359,7 +1359,7 @@ Transform:
   m_GameObject: {fileID: 745182717}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000000026961982, y: 0.000000009436694, z: 2.5443197e-17, w: 1}
-  m_LocalPosition: {x: 0.83, y: 1.52, z: -3.24}
+  m_LocalPosition: {x: 0.71, y: 1.97, z: -3.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1452,8 +1452,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775879631}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1520567, y: -0.0134685915, z: 0.0020722812, w: 0.98827785}
-  m_LocalPosition: {x: 0, y: 2.7955291, z: -4.7685847}
+  m_LocalRotation: {x: 0.14176518, y: 0.000000004813256, z: -6.893138e-10, w: 0.98990035}
+  m_LocalPosition: {x: 0, y: 2.1340003, z: -2.879416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1791,7 +1791,7 @@ MonoBehaviour:
       Owner: {fileID: 918085405}
       Enabled: 1
       Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
+        InputAction: {fileID: 1605356457}
         Gain: -1
         CancelDeltaTime: 0
       InputValue: 0
@@ -1850,7 +1850,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: -0.13, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 0.5}
   Lookahead:
     Enabled: 0
@@ -1908,8 +1908,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918085398}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15205666, y: -0.01346859, z: 0.0020722803, w: 0.9882779}
-  m_LocalPosition: {x: 0, y: 2.7955291, z: -4.7685847}
+  m_LocalRotation: {x: 0.14176515, y: 0.0000000049078177, z: -0.0000000013496155, w: 0.98990035}
+  m_LocalPosition: {x: 0, y: 2.1340003, z: -2.879416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1935,7 +1935,7 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   OrbitStyle: 0
-  Radius: 5
+  Radius: 3
   Orbits:
     Top:
       Radius: 2
@@ -1959,7 +1959,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 17.5
+    Value: 16.3
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -2463,7 +2463,7 @@ Transform:
   m_GameObject: {fileID: 1314143668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.015, y: -0.596, z: -0.092}
+  m_LocalPosition: {x: -3.015, y: -0.9, z: -0.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2488,7 +2488,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.26
+  m_Radius: 0.2
   m_Center: {x: 1.42, y: 0, z: 0}
 --- !u!114 &1314143671
 MonoBehaviour:
@@ -2938,6 +2938,20 @@ CapsuleCollider:
   m_Height: 1.7385883
   m_Direction: 1
   m_Center: {x: 0.08411646, y: -0.12985241, z: 0.110820144}
+--- !u!114 &1605356457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Gameplay/CameraMovement
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 21187e2ee1b90224a9700e969d14e875, type: 3}
+  m_ActionId: c3478094-897e-45a0-ab89-7aa7aa8922e4
 --- !u!1 &1678302958
 GameObject:
   m_ObjectHideFlags: 0
