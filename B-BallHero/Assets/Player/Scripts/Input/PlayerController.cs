@@ -22,10 +22,10 @@ namespace BBallHero.Gameplay.Player.Input
         [SerializeField, ReadOnly(true)]
         private Vector2 _mouseVector2Input;
 
-        private bool _isAiming = false;
-
         public event Action MovementStarted;
         public event Action MovementStopped;
+        public event Action AimStarted;
+        public event Action AimCancelled;
 
         private void OnEnable()
         {
@@ -79,7 +79,7 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void Update()
         {
-            if (_isAiming)
+            if (_player.isAiming)
             {
                 _movement.RotateWhileAiming(_vector2Input);
             }
@@ -87,7 +87,7 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void FixedUpdate()
         {
-            if (_isAiming == false)
+            if (_player.isAiming == false)
             {
                 _movement.HandleMovement(_vector2Input);
                 _movement.HandleRotation(_vector2Input);
@@ -106,7 +106,7 @@ namespace BBallHero.Gameplay.Player.Input
                 return;
 
             _throwBall.CancelThrow();
-            _isAiming = false;
+            AimCancelled?.Invoke();
             GameManager.instance.SetFreeLookCameraOn();
         }
 
@@ -114,10 +114,9 @@ namespace BBallHero.Gameplay.Player.Input
         {
             if (_player.hasBasketball == false)
                 return;
-            if (_isAiming == false)
+            if (_player.isAiming == false)
                 return;
 
-            _isAiming = false;
             _throwBall.ReleaseThrow();
             GameManager.instance.SetFreeLookCameraOn();
         }
@@ -129,8 +128,8 @@ namespace BBallHero.Gameplay.Player.Input
 
             GameManager.instance.SetThirdPersonCameraOn();
             _movement.ForceRotateForThrow();
-            _isAiming = true;
             _throwBall.StartThrow();
+            AimStarted?.Invoke();
         }
 
         private void OnSprintCancelled()

@@ -23,6 +23,9 @@ namespace BBallHero.Gameplay.Player
         private bool _hasBasketball;
         [SerializeField]
         private GameObject _animatedBall;
+        [SerializeField]
+        private bool _isAiming = false;
+        public bool isAiming => _isAiming;
 
         public bool hasBasketball
         {
@@ -46,6 +49,8 @@ namespace BBallHero.Gameplay.Player
             _playerAnimationEvents.BasketballReleased += OnBasketballReleased;
             _playerController.MovementStarted += OnMovementStarted;
             _playerController.MovementStopped += OnMovementStopped;
+            _playerController.AimStarted += OnAimStarted;
+            _playerController.AimCancelled += OnAimCancelled;
         }
 
         private void OnDisable()
@@ -56,6 +61,18 @@ namespace BBallHero.Gameplay.Player
             _playerAnimationEvents.BasketballReleased += OnBasketballReleased;
             _playerController.MovementStarted -= OnMovementStarted;
             _playerController.MovementStopped -= OnMovementStopped;
+            _playerController.AimStarted -= OnAimStarted;
+            _playerController.AimCancelled -= OnAimCancelled;
+        }
+
+        private void OnAimCancelled()
+        {
+            _isAiming = false;
+        }
+
+        private void OnAimStarted()
+        {
+            _isAiming = true;
         }
 
         private void OnBasketballReleased()
@@ -94,6 +111,7 @@ namespace BBallHero.Gameplay.Player
 
         public void ShootExitBehaviour()
         {
+            _isAiming = false;
             _hasBasketball = false;
             _basketballPicker.EnableCollider();
         }
