@@ -22,6 +22,7 @@ namespace BBallHero.Gameplay.Player.Input
         private Vector2 _mouseVector2Input;
 
         private bool _canMove = true;
+        private bool _isAiming = false;
 
         private void OnEnable()
         {
@@ -32,7 +33,7 @@ namespace BBallHero.Gameplay.Player.Input
             _inputReader.SprintCancelled += OnSprintCancelled;
             _inputReader.ShootPerformed += OnShootPerformed;
             _inputReader.ShootCancelled += OnShootCancelled;
-            _inputReader.LockOnPerformed += OnLockOnPerformed;
+            _inputReader.CancelShotPerformed += OnCancelShotPerformed;
         }
 
         private void OnDisable()
@@ -44,7 +45,7 @@ namespace BBallHero.Gameplay.Player.Input
             _inputReader.SprintCancelled -= OnSprintCancelled;
             _inputReader.ShootPerformed -= OnShootPerformed;
             _inputReader.ShootCancelled -= OnShootCancelled;
-            _inputReader.LockOnPerformed -= OnLockOnPerformed;
+            _inputReader.CancelShotPerformed -= OnCancelShotPerformed;
         }
 
         private void Awake()
@@ -61,27 +62,47 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void Update()
         {
-            
+            if (_isAiming)
+            {
+                _movement.RotateWhileAiming(_vector2Input);
+            }
         }
 
         private void FixedUpdate()
         {
-            _movement.HandleMovement(_vector2Input);
-            _movement.HandleRotation(_vector2Input);
+            if (_isAiming == false)
+            {
+                _movement.HandleMovement(_vector2Input);
+                _movement.HandleRotation(_vector2Input);
+
+                if(_vector2Input == Vector2.zero)
+                {
+                    _movement.HandleBraking();
+                }
+            }
         }
 
         #region Input Event Functions
-        private void OnLockOnPerformed()
+        private void OnCancelShotPerformed()
         {
-            
+            if (_player.hasBasketball == false)
+                return;
+
+            _throwBall.CancelThrow();
+            _isAiming = false;
+            _canMove = true;
+            GameManager.instance.SetFreeLookCameraOn();
         }
 
         private void OnShootCancelled()
         {
             if (_player.hasBasketball == false)
                 return;
+            if (_isAiming == false)
+                return;
 
             _canMove = true;
+            _isAiming = false;
             _throwBall.ReleaseThrow();
             GameManager.instance.SetFreeLookCameraOn();
         }
@@ -94,6 +115,7 @@ namespace BBallHero.Gameplay.Player.Input
             GameManager.instance.SetThirdPersonCameraOn();
             _movement.ForceRotateForThrow();
             _canMove = false;
+            _isAiming = true;
             _throwBall.StartThrow();
         }
 
@@ -114,8 +136,6 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void OnMovementPerformed(Vector2 vector)
         {
-            if(_canMove == false)
-                return;
             _vector2Input = vector;
         }
 

@@ -16,8 +16,8 @@ namespace BBallHero.Gameplay.Player
         private float _throwForce;
         [SerializeField]
         private float _maxForce;
-        [SerializeField]
-        private float _chargeTime;
+
+        private float _chargeTime = 0;
         private bool _isCharging = false;
         [SerializeField]
         private LineRenderer _trajectoryLine;
@@ -74,6 +74,12 @@ namespace BBallHero.Gameplay.Player
             _isCharging = false;
             _trajectoryLine.enabled = false;
             ThrewBasketball?.Invoke();
+        }
+
+        public void CancelThrow()
+        {
+            _isCharging = false;
+            _trajectoryLine.enabled = false;
         }
 
 

@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LockOn",
+                    "name": "CancelShot",
                     "type": "Button",
                     "id": "b067e0f8-b4b4-4a2f-ab3e-bd06c4afd408",
                     "expectedControlType": "",
@@ -148,7 +148,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LockOn",
+                    "action": "CancelShot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

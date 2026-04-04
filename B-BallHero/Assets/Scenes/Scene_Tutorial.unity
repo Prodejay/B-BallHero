@@ -3065,10 +3065,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BBallHero.Gameplay.Player.MovementModule
   _currentMoveSpeed: 0
-  _moveSpeed: 15
-  _sprintSpeed: 30
+  _moveSpeed: 14
+  _sprintSpeed: 18
+  _maxSpeed: 18
   _rotationDuration: 0.4
-  _maxSpeed: 20
+  _aimRotationSpeed: 10
+  _brakeForce: 10
   _playerHeight: 1000
   _groundLayer:
     serializedVersion: 2
@@ -3092,7 +3094,6 @@ MonoBehaviour:
   _throwDirection: {x: 0, y: 1, z: 0}
   _throwForce: 5
   _maxForce: 10
-  _chargeTime: 0
   _trajectoryLine: {fileID: 1698437140}
 --- !u!120 &1698437140
 LineRenderer:
@@ -3167,8 +3168,8 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -3184,13 +3185,13 @@ LineRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65150
-      atime2: 0
+      atime2: 65150
       atime3: 0
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 1
+      m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2

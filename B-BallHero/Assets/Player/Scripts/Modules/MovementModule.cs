@@ -14,9 +14,13 @@ namespace BBallHero.Gameplay.Player
         [SerializeField]
         private float _sprintSpeed = 15f;
         [SerializeField]
+        private float _maxSpeed = 20f;
+        [SerializeField]
         private float _rotationDuration = 1f;
         [SerializeField]
-        private float _maxSpeed = 20f;
+        private float _aimRotationSpeed = 5f;
+        [SerializeField]
+        private float _brakeForce = 10f;
 
         [Header("Ground Check")]
         [SerializeField]
@@ -88,6 +92,22 @@ namespace BBallHero.Gameplay.Player
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _rotationDuration);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
+        }
+
+        public void RotateWhileAiming(Vector2 vector2Input)
+        {
+            if(vector2Input.x != 0)
+            {
+                float angle = vector2Input.x * _aimRotationSpeed * Time.deltaTime;
+                Quaternion deltaRotation = Quaternion.Euler(0f, angle, 0f);
+                transform.rotation *= deltaRotation;
+            }
+        }
+
+        public void HandleBraking()
+        {
+            Vector3 reverseForce = -_rb.linearVelocity * _brakeForce;
+            _rb.AddForce(reverseForce, ForceMode.Force);
         }
 
         public void ForceRotateForThrow()

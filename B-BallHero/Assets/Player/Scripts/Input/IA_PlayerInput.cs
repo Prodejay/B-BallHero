@@ -129,7 +129,7 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LockOn"",
+                    ""name"": ""CancelShot"",
                     ""type"": ""Button"",
                     ""id"": ""b067e0f8-b4b4-4a2f-ab3e-bd06c4afd408"",
                     ""expectedControlType"": """",
@@ -234,7 +234,7 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LockOn"",
+                    ""action"": ""CancelShot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -255,7 +255,7 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
         m_Gameplay_CameraMovement = m_Gameplay.FindAction("CameraMovement", throwIfNotFound: true);
         m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
-        m_Gameplay_LockOn = m_Gameplay.FindAction("LockOn", throwIfNotFound: true);
+        m_Gameplay_CancelShot = m_Gameplay.FindAction("CancelShot", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -343,7 +343,7 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_CameraMovement;
     private readonly InputAction m_Gameplay_Sprint;
     private readonly InputAction m_Gameplay_Shoot;
-    private readonly InputAction m_Gameplay_LockOn;
+    private readonly InputAction m_Gameplay_CancelShot;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -372,9 +372,9 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         /// <summary>
-        /// Provides access to the underlying input action "Gameplay/LockOn".
+        /// Provides access to the underlying input action "Gameplay/CancelShot".
         /// </summary>
-        public InputAction @LockOn => m_Wrapper.m_Gameplay_LockOn;
+        public InputAction @CancelShot => m_Wrapper.m_Gameplay_CancelShot;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -413,9 +413,9 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
-            @LockOn.started += instance.OnLockOn;
-            @LockOn.performed += instance.OnLockOn;
-            @LockOn.canceled += instance.OnLockOn;
+            @CancelShot.started += instance.OnCancelShot;
+            @CancelShot.performed += instance.OnCancelShot;
+            @CancelShot.canceled += instance.OnCancelShot;
         }
 
         /// <summary>
@@ -439,9 +439,9 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
-            @LockOn.started -= instance.OnLockOn;
-            @LockOn.performed -= instance.OnLockOn;
-            @LockOn.canceled -= instance.OnLockOn;
+            @CancelShot.started -= instance.OnCancelShot;
+            @CancelShot.performed -= instance.OnCancelShot;
+            @CancelShot.canceled -= instance.OnCancelShot;
         }
 
         /// <summary>
@@ -596,12 +596,12 @@ public partial class @IA_PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "LockOn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "CancelShot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLockOn(InputAction.CallbackContext context);
+        void OnCancelShot(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

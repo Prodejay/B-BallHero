@@ -40,7 +40,7 @@ namespace BBallHero.Gameplay.Player.Input
         public event Action SprintCancelled;
         public event Action ShootPerformed;
         public event Action ShootCancelled;
-        public event Action LockOnPerformed;
+        public event Action CancelShotPerformed;
 
 
         public void OnCameraMovement(InputAction.CallbackContext context)
@@ -90,11 +90,11 @@ namespace BBallHero.Gameplay.Player.Input
             }
         }
 
-        public void OnLockOn(InputAction.CallbackContext context)
+        public void OnCancelShot(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                LockOnPerformed?.Invoke();
+                CancelShotPerformed?.Invoke();
             }
         }
     }
