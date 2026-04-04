@@ -19,11 +19,18 @@ namespace BBallHero.Gameplay.Enemy
         [SerializeField]
         private ParticleSystem _explosionVFX;
         [SerializeField]
+        private ParticleSystem _spawnInVFX;
+
+        [SerializeField]
         private float _deathDelay = 2f;
+
+        public event Action<EnemyAI> Killed;
 
         private void OnEnable()
         {
             _basketScore.Scored += OnScore;
+
+            _spawnInVFX.Play();
         }
 
         private void OnDisable()
@@ -31,6 +38,12 @@ namespace BBallHero.Gameplay.Enemy
             _basketScore.Scored -= OnScore;
         }
 
+        public void SetTarget(Transform target)
+        {
+            _target = target;
+        }
+
+        [ContextMenu("Kill Me")]
         private void OnScore()
         {
             _explosionVFX.Play();
@@ -43,6 +56,7 @@ namespace BBallHero.Gameplay.Enemy
         private IEnumerator DeathRoutine()
         {
             yield return new WaitForSeconds(_deathDelay);
+            Killed?.Invoke(this);
             Destroy(gameObject);
         }
 

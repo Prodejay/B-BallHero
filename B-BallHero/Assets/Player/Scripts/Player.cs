@@ -42,6 +42,7 @@ namespace BBallHero.Gameplay.Player
         {
             _basketballPicker.PickedUpBasketball += OnPickedUpBasketball;
             _shootModule.ThrewBasketball += OnThrewBasketball;
+            _playerAnimationEvents.ShootAnimationEnd += OnShootAnimationEnd;
             _playerAnimationEvents.BasketballReleased += OnBasketballReleased;
             _playerController.MovementStarted += OnMovementStarted;
             _playerController.MovementStopped += OnMovementStopped;
@@ -51,9 +52,16 @@ namespace BBallHero.Gameplay.Player
         {
             _basketballPicker.PickedUpBasketball -= OnPickedUpBasketball;
             _shootModule.ThrewBasketball -= OnThrewBasketball;
-            _playerAnimationEvents.BasketballReleased -= OnBasketballReleased;
+            _playerAnimationEvents.ShootAnimationEnd -= OnShootAnimationEnd;
+            _playerAnimationEvents.BasketballReleased += OnBasketballReleased;
             _playerController.MovementStarted -= OnMovementStarted;
             _playerController.MovementStopped -= OnMovementStopped;
+        }
+
+        private void OnBasketballReleased()
+        {
+            _animatedBall.SetActive(false);
+            _shootModule.ReleaseBall();
         }
 
         private void OnMovementStopped()
@@ -66,11 +74,9 @@ namespace BBallHero.Gameplay.Player
             
         }
 
-        private void OnBasketballReleased()
+        private void OnShootAnimationEnd()
         {
             _hasBasketball = false;
-            _animatedBall.SetActive(false);
-            _shootModule.ReleaseBall();
             _animator.SetBool("IsShooting", false);
             _basketballPicker.EnableCollider();
         }

@@ -7,10 +7,11 @@ namespace BBallHero.Gameplay.Player
 {
     public class PlayerAnimationEvents : MonoBehaviour
     {
+        public event Action ShootAnimationEnd;
         public event Action BasketballReleased;
         public void BasketballThrown()
         {
-            BasketballReleased?.Invoke();
+            BasketballReleased?.Invoke();           
             SoundManager.instance.PlaySoundEffect(SoundType.THROWWOOSH);
         }
 
@@ -22,6 +23,11 @@ namespace BBallHero.Gameplay.Player
         public void StepTaken()
         {
             SoundManager.instance.PlaySoundEffect(SoundType.ARMORCLANK, 0.3f);
+        }
+
+        public void ShootEnd()
+        {
+            ShootAnimationEnd?.Invoke();
         }
     }
 }

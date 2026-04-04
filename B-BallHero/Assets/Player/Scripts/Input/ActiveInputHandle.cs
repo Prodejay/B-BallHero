@@ -14,7 +14,6 @@ namespace BBallHero.Gameplay.Player.Input
 
         private void OnDisable()
         {
-            //Temporarily placed here to deal with stack overflow warning error
             _inputReader.SetInputToUI();
         }
     }

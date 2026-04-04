@@ -71,7 +71,8 @@ namespace BBallHero.Gameplay.Sound
         SHOOTSWISH,
         THROWWOOSH,
         KOBE,
-        EXPLOSION
+        EXPLOSION,
+        TELEPORT
     }
 
 }

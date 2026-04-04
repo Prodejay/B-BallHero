@@ -30,7 +30,6 @@ namespace BBallHero.Gameplay
                 _confettiVFX.Play();
                 _impulse.GenerateImpulse();
                 SoundManager.instance.PlaySoundEffect(SoundType.SHOOTSWISH);
-                SoundManager.instance.PlaySoundEffect(SoundType.MLGHORN, 0.3f);
                 Scored?.Invoke();
             }
         }
