@@ -1,3 +1,4 @@
+using BBallHero.Gameplay.Sound;
 using System;
 using Unity.Jobs;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace BBallHero.Gameplay.Player
         private float _maxForce;
 
         private float _chargeTime = 0;
+        private float _currentForce;
         private bool _isCharging = false;
         [SerializeField]
         private LineRenderer _trajectoryLine;
@@ -49,9 +51,9 @@ namespace BBallHero.Gameplay.Player
         public void ChargeThrow()
         {
             _chargeTime += Time.deltaTime;
-
+            _currentForce = Mathf.Min(_chargeTime * _throwForce, _maxForce);
             //trajectory line velocity
-            Vector3 ballVelocity = (transform.forward + _throwDirection).normalized * Mathf.Min(_chargeTime * _throwForce, _maxForce);
+            Vector3 ballVelocity = (transform.forward + _throwDirection).normalized * _currentForce;
             ShowTrajectory(_shootStartPoint.position + transform.forward, ballVelocity);
         }
 
@@ -73,6 +75,10 @@ namespace BBallHero.Gameplay.Player
             //Invoke event to play animation
             _isCharging = false;
             _trajectoryLine.enabled = false;
+            if(_currentForce >= _maxForce)
+            {
+                SoundManager.instance.PlaySoundEffect(SoundType.KOBE, 0.3f);
+            }
             ThrewBasketball?.Invoke();
         }
 

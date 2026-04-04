@@ -21,7 +21,7 @@ namespace BBallHero.Gameplay.Player
 
         public void StepTaken()
         {
-            SoundManager.instance.PlaySoundEffect(SoundType.ARMORCLANK, 0.5f);
+            SoundManager.instance.PlaySoundEffect(SoundType.ARMORCLANK, 0.3f);
         }
     }
 }

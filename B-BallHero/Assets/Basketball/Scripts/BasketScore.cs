@@ -5,6 +5,8 @@ namespace BBallHero.Gameplay
 {
     public class BasketScore : MonoBehaviour
     {
+        [SerializeField]
+        private ParticleSystem _confettiVFX;
         private void OnTriggerEnter(Collider other)
         {
             if (other.transform.tag != "Basketball")
@@ -18,6 +20,7 @@ namespace BBallHero.Gameplay
             if (dot > 0.5f)
             {
                 GameManager.instance.AddScore(1);
+                _confettiVFX.Play();
                 SoundManager.instance.PlaySoundEffect(SoundType.SHOOTSWISH);
                 SoundManager.instance.PlaySoundEffect(SoundType.MLGHORN, 0.3f);
             }

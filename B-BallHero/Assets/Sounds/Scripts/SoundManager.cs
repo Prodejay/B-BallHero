@@ -69,7 +69,8 @@ namespace BBallHero.Gameplay.Sound
         METALPIPE,
         RIMHIT,
         SHOOTSWISH,
-        THROWWOOSH
+        THROWWOOSH,
+        KOBE
     }
 
 }

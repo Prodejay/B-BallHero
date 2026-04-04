@@ -2088,6 +2088,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: f4cc61016a43b78429428ea3815d6a43, type: 3}
     - {fileID: 8300000, guid: a17e468f68d236646ab9ee4caac47005, type: 3}
     name: THROWWOOSH
+  - _sounds:
+    - {fileID: 8300000, guid: 73ca1564145e6394bbb534248d57693b, type: 3}
+    name: KOBE
 --- !u!1 &1968624903
 GameObject:
   m_ObjectHideFlags: 0
