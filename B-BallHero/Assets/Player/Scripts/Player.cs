@@ -76,9 +76,7 @@ namespace BBallHero.Gameplay.Player
 
         private void OnShootAnimationEnd()
         {
-            _hasBasketball = false;
-            _animator.SetBool("IsShooting", false);
-            _basketballPicker.EnableCollider();
+
         }
 
         private void OnThrewBasketball()
@@ -92,6 +90,12 @@ namespace BBallHero.Gameplay.Player
             _animatedBall.SetActive(true);
             _animator.SetBool("HasBall", true);
             _basketballPicker.DisableCollider();
+        }
+
+        public void ShootExitBehaviour()
+        {
+            _hasBasketball = false;
+            _basketballPicker.EnableCollider();
         }
 
         private void Awake()
